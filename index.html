@@ -49,15 +49,125 @@
         .partner-node {
             transition: all 0.3s ease;
             cursor: pointer;
+            /* New styles for list display */
+            position: relative; /* Changed from absolute */
+            margin-bottom: 10px; /* Spacing between list items */
+            width: 100%; /* Full width within its container */
+            text-align: center; /* Center text within the button */
+            padding: 12px 20px; /* More padding for better button feel */
+            border-radius: 8px; /* Slightly more rounded */
+            background-color: white; /* Ensure background is white */
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* Subtle shadow */
+            border: 1px solid var(--color-border); /* Border for definition */
         }
         .partner-node:hover {
-            transform: scale(1.05);
-            background-color: var(--color-background-light); /* Lighter hover for partner nodes */
+            transform: translateY(-2px) scale(1.01); /* Slight lift and scale on hover */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* More pronounced shadow on hover */
         }
-        .partner-line {
+        /* Remove absolute positioning for list items */
+        .partner-node.absolute {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            transform: none;
+            margin: 10px 0; /* Adjust margin for list layout */
+        }
+        /* Flex container for the list */
+        #partner-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally in the column */
+            justify-content: flex-start; /* Align items to the start of the column */
+            padding: 20px; /* Add padding to the container */
+            height: auto; /* Adjust height to content */
+        }
+
+        /* Timeline specific styles */
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding: 10px 0;
+        }
+        .timeline::before {
+            content: '';
             position: absolute;
-            background-color: var(--color-neutral);
-            z-index: -1;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-accent-medium);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .timeline-item-content {
+            width: calc(50% - 30px);
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            border: 1px solid var(--color-border);
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) .timeline-item-content {
+            margin-left: 30px;
+        }
+        .timeline-item:nth-child(even) .timeline-item-content {
+            margin-right: 30px;
+        }
+        .timeline-item-point {
+            width: 20px;
+            height: 20px;
+            background: var(--color-accent-dark);
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            border: 3px solid var(--color-background-light);
+        }
+        .timeline-item:nth-child(odd) .timeline-item-point {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .timeline-item:nth-child(even) .timeline-item-point {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .timeline-item-date {
+            font-weight: bold;
+            color: var(--color-accent-dark);
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 15px;
+                transform: translateX(0);
+            }
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+            }
+            .timeline-item-content {
+                width: calc(100% - 40px);
+                margin-left: 40px !important;
+                margin-right: 0 !important;
+            }
+            .timeline-item-point {
+                left: 15px;
+                transform: translateX(-50%);
+            }
         }
     </style>
 </head>
@@ -95,6 +205,91 @@
                 <p class="text-lg text-[var(--color-neutral)] leading-relaxed">
                     This interactive report demonstrates the fulfillment of key objectives within the Epitech Innovative Project (EIP) Solution Track. Our project, "No More," is an innovative mobile application designed to provide comprehensive support and resources to individuals battling addiction. It also aims to help users get in touch with professionals for further assistance. By fostering a community-driven approach to recovery, "No More" aims to create a tangible societal impact, focusing on a well-crafted user experience, an effective visibility strategy, and an engaged, supportive community. This document outlines our strategies and showcases the evidence of our achievements.
                 </p>
+
+                <h3 class="text-2xl font-bold text-[var(--color-primary-text)] mb-6 mt-8">Chronological Roadmap – Social Media & Community Strategy</h3>
+                <p class="text-[var(--color-neutral)] mb-6">This roadmap outlines the key phases for our social media and community strategy, designed to build and engage our user base, starting from our initial visibility launch to future growth and expansion.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <div class="timeline-item-date">✅ June 2025: Visibility Launch</div>
+                            <p class="text-[var(--color-neutral)]"><strong>Creation of official social media accounts:</strong></p>
+                            <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4">
+                                <li>Instagram (visual content, testimonies, awareness)</li>
+                                <li>LinkedIn (mission-focused, B2B outreach, professional partnerships)</li>
+                            </ul>
+                            <p class="text-[var(--color-neutral)] mt-2"><strong>Brand identity launch:</strong> (logo, color scheme, tone of voice)</p>
+                            <p class="text-[var(--color-neutral)] mt-2"><strong>Start of the content strategy:</strong></p>
+                            <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4">
+                                <li>Introductory posts (vision, goals, team)</li>
+                                <li>Teasers about upcoming features (sobriety counter, self-restraint currency, challenges, etc.)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item-point"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <div class="timeline-item-date">💤 July – August 2025: Summer Break</div>
+                            <p class="text-[var(--color-neutral)]"><strong>Reduced activity:</strong> 1 post every two weeks on Instagram and LinkedIn to maintain minimal presence.</p>
+                            <p class="text-[var(--color-neutral)] mt-2">Scheduled light content (quotes, support messages, summer sobriety tips)</p>
+                            <p class="text-[var(--color-neutral)] mt-2">No new launches or community events</p>
+                            <p class="text-[var(--color-neutral)] mt-2">Basic monitoring only (replying to DMs/messages, passive observation)</p>
+                        </div>
+                        <div class="timeline-item-point"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <div class="timeline-item-date">🔁 September 2025: Full Relaunch</div>
+                            <p class="text-[var(--color-neutral)]"><strong>Launch of the official Discord server:</strong></p>
+                            <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4">
+                                <li>Channels for support, resources, sobriety tracking, and challenges</li>
+                                <li>Community rules and moderation system implemented</li>
+                                <li>Planning of monthly expert discussion sessions (therapists, coaches)</li>
+                            </ul>
+                            <p class="text-[var(--color-neutral)] mt-2">Restart of regular content on Instagram (testimonies, challenges, mini videos)</p>
+                        </div>
+                        <div class="timeline-item-point"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <div class="timeline-item-date">🛠️ October 2025: Feature Rollout</div>
+                            <p class="text-[var(--color-neutral)]"><strong>Launch of the in-app community forum:</strong></p>
+                            <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4">
+                                <li>Topics: support, shared resources, personal stories, expert Q&As</li>
+                            </ul>
+                            <p class="text-[var(--color-neutral)] mt-2">Private messaging system goes live (user-to-user and user-to-professional)</p>
+                            <p class="text-[var(--color-neutral)] mt-2">LinkedIn reactivation with a series of posts on reintegration, professional partnerships, and social innovation</p>
+                        </div>
+                        <div class="timeline-item-point"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <div class="timeline-item-date">💡 November – December 2025: Engagement & Gamification</div>
+                            <p class="text-[var(--color-neutral)]">Launch of monthly community challenges with progress tracking</p>
+                            <p class="text-[var(--color-neutral)] mt-2">Implementation of a virtual reward system tied to self-restraint and community participation</p>
+                            <p class="text-[var(--color-neutral)] mt-2">Creation of Instagram Story Highlights (testimonies, tools, tips, prevention)</p>
+                            <p class="text-[var(--color-neutral)] mt-2">First Instagram ad tests to reach new users</p>
+                        </div>
+                        <div class="timeline-item-point"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <div class="timeline-item-date">🚀 January 2026 and Beyond: Growth & Expansion</div>
+                            <p class="text-[var(--color-neutral)]"><strong>Expansion to new platforms:</strong></p>
+                            <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4">
+                                <li>Exploration of TikTok or YouTube (for education and personal stories)</li>
+                            </ul>
+                            <p class="text-[var(--color-neutral)] mt-2">Launch of a sobriety & mental health blog on the website/app</p>
+                            <p class="text-[var(--color-neutral)] mt-2">Search for influencer partnerships (mental health, wellness, addiction recovery professionals)</p>
+                        </div>
+                        <div class="timeline-item-point"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -251,6 +446,27 @@
                             <li>We will encourage students to train on social media management tools such as **Canva** for efficient content scheduling, creation, and visual design. Our team has actively utilized Canva for the creation of various project documents, demonstrating its effectiveness in our workflow.</li>
                         </ul>
 
+                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Frise Chronologique de Planification Réseaux Sociaux</h4>
+                        <p class="text-[var(--color-neutral)] mb-4">Notre planification pour l'évolution de notre présence sur les réseaux sociaux se déroulera en plusieurs étapes clés :</p>
+                        <div class="relative pl-6 border-l-2 border-[var(--color-accent-medium)] space-y-6">
+                            <div class="relative">
+                                <div class="absolute -left-3 top-0 w-6 h-6 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
+                                <h5 class="text-lg font-semibold text-[var(--color-primary-text)] ml-4">Jalon 1 : Création et Lancement du Discord</h5>
+                                <p class="text-[var(--color-neutral)] ml-4">Mise en place d'un serveur Discord dédié pour créer un espace communautaire interactif. Ce jalon inclura la définition des canaux, des règles, et le lancement initial auprès des beta-testeurs et des premiers abonnés. L'objectif est de faciliter les échanges directs et le support mutuel.</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-3 top-0 w-6 h-6 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+                                <h5 class="text-lg font-semibold text-[var(--color-primary-text)] ml-4">Jalon 2 : Évolution du Contenu et Diversification</h5>
+                                <p class="text-[var(--color-neutral)] ml-4">Développement de nouveaux formats de contenu (vidéos courtes, témoignages animés, infographies interactives) et diversification des sujets abordés sur Instagram et LinkedIn. Cette phase visera à maintenir l'intérêt et la pertinence, en s'appuyant sur les retours de la communauté et les analyses de performance.</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-3 top-0 w-6 h-6 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+                                <h5 class="text-lg font-semibold text-[var(--color-primary-text)] ml-4">Jalon 3 : Engagement Plus Présent et Fidélisation</h5>
+                                <p class="text-[var(--color-neutral)] ml-4">Mise en place de campagnes d'engagement régulières (sondages, défis, événements en ligne, sessions Q&A en direct) sur toutes les plateformes. Augmentation de la fréquence des interactions directes avec les abonnés pour renforcer le sentiment d'appartenance et la fidélité à la marque "No More".</p>
+                            </div>
+                        </div>
+                        <p class="text-[var(--color-neutral)] mt-4">Cette feuille de route vise à dynamiser notre présence en ligne et à construire une communauté solide et engagée autour de "No More".</p>
+
                        <p class="text-center text-sm text-[var(--color-neutral)] mt-4">This approach aims to foster a strong community and establish "No More" as a leading voice in addiction support.</p>
                    </div>
                    
@@ -260,13 +476,14 @@
                         
                         <div class="flex flex-col lg:flex-row gap-8">
                             <div class="w-full lg:w-1/2">
-                                <div id="partner-diagram" class="relative bg-white rounded-lg p-8 h-96 flex items-center justify-center border border-[var(--color-border)]">
-                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10">No More</div>
+                                <div id="partner-diagram" class="relative bg-white rounded-lg p-8 h-auto flex flex-col items-center justify-center border border-[var(--color-border)]">
+                                    <div class="w-24 h-24 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg mb-8">No More</div>
                                     
-                                    <div class="partner-node absolute top-8 left-8 p-3 bg-white rounded-lg shadow border border-[var(--color-border)]" data-partner="addiction-france">Addiction France</div>
-                                    <div class="partner-node absolute bottom-8 left-8 p-3 bg-white rounded-lg shadow border border-[var(--color-border)]" data-partner="ameli">Ameli</div>
-                                    <div class="partner-node absolute top-8 right-8 p-3 bg-white rounded-lg shadow border border-[var(--color-border)]" data-partner="doctolib">Doctolib</div>
-                                    <div class="partner-node absolute bottom-8 right-8 p-3 bg-white rounded-lg shadow border border-[var(--color-border)]" data-partner="influencers">Influencers</div>
+                                    <div class="partner-node" data-partner="addiction-france">Addiction France</div>
+                                    <div class="partner-node" data-partner="ameli">Ameli</div>
+                                    <div class="partner-node" data-partner="doctolib">Doctolib</div>
+                                    <div class="partner-node" data-partner="influencers">Influencers</div>
+                                    <div class="partner-node" data-partner="professional-network">Professional Network</div>
                                 </div>
                                  <p class="text-center text-sm text-[var(--color-neutral)] mt-2">Fig 2: A visual map of our key strategic partners. Click a node to view details.</p>
                             </div>
@@ -361,6 +578,10 @@
                 'influencers': {
                     name: 'Health & Wellness Influencers (Planned)',
                     content: `<p class="text-[var(--color-neutral)]"><strong>Nature of Planned Partnership:</strong> We are identifying and reaching out to authentic influencers in the mental health and recovery space to share their stories and promote "No More".</p><p class="mt-2 text-[var(--color-neutral)]"><strong>Expected Impact:</strong> To drive targeted user acquisition and build social proof through trusted voices in the community.</p>`
+                },
+                'professional-network': {
+                    name: 'Professional Network (Active)',
+                    content: `<p class="text-[var(--color-neutral)]"><strong>Nature of Partnership:</strong> We are already in contact with several medical doctors specializing in addiction and mental health. Their expertise is essential to guarantee the quality and relevance of the information and support offered by "No More".</p><p class="mt-2 text-[var(--color-neutral)]"><strong>Expected Impact:</strong> To improve content validation, refine support protocols, facilitate direct referrals to qualified healthcare professionals, and integrate expert insights into app development.</p>`
                 }
             };
             
