@@ -49,22 +49,20 @@
         .partner-node {
             transition: all 0.3s ease;
             cursor: pointer;
-            /* New styles for list display */
-            position: relative; /* Changed from absolute */
-            margin-bottom: 10px; /* Spacing between list items */
-            width: 100%; /* Full width within its container */
-            text-align: center; /* Center text within the button */
-            padding: 12px 20px; /* More padding for better button feel */
-            border-radius: 8px; /* Slightly more rounded */
-            background-color: white; /* Ensure background is white */
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* Subtle shadow */
-            border: 1px solid var(--color-border); /* Border for definition */
+            position: relative;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            border: 1px solid var(--color-border);
         }
         .partner-node:hover {
-            transform: translateY(-2px) scale(1.01); /* Slight lift and scale on hover */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* More pronounced shadow on hover */
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
-        /* Remove absolute positioning for list items */
         .partner-node.absolute {
             position: relative;
             top: auto;
@@ -72,16 +70,15 @@
             right: auto;
             bottom: auto;
             transform: none;
-            margin: 10px 0; /* Adjust margin for list layout */
+            margin: 10px 0;
         }
-        /* Flex container for the list */
         #partner-diagram {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center items horizontally in the column */
-            justify-content: flex-start; /* Align items to the start of the column */
-            padding: 20px; /* Add padding to the container */
-            height: auto; /* Adjust height to content */
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            height: auto;
         }
 
         /* Timeline specific styles */
@@ -169,6 +166,27 @@
                 transform: translateX(-50%);
             }
         }
+
+        .value-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 10px;
+            margin-top: 5px;
+        }
+        .value-bar {
+            height: 100%;
+            background-color: var(--color-accent-medium);
+            width: 0; /* Initial width for animation */
+            transition: width 1s ease-out;
+        }
+        .icon-small {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body class="bg-[var(--color-background-light)] text-[var(--color-primary-text)]">
@@ -248,7 +266,7 @@
                                 <li>Community rules and moderation system implemented</li>
                                 <li>Planning of monthly expert discussion sessions (therapists, coaches)</li>
                             </ul>
-                            <p class="text-[var(--color-neutral)] mt-2">Restart of regular content on Instagram (testimonies, challenges, mini videos)</p>
+                            <p class="text-[var(--color-neutral)] mt-2">Restart of regular content on Instagram (testimonios, challenges, mini videos)</p>
                         </div>
                         <div class="timeline-item-point"></div>
                     </div>
@@ -380,30 +398,14 @@
                             <li><strong>Community Leadership:</strong> Opportunities will be created for highly engaged beta testers to become community moderators or mentors within the app, fostering a sense of leadership and responsibility.</li>
                         </ul>
                         <p class="text-[var(--color-neutral)] mt-4">This strategy aims to build a loyal and highly engaged beta community by valuing their contributions and making them integral to the project's success.</p>
-                    </div>
 
-                    <div class="border border-[var(--color-border)] rounded-lg p-6">
-                        <h3 class="text-2xl font-semibold text-[var(--color-accent-dark)] mb-3">2. Working on User Experience (UX/UI)</h3>
-                        <p class="text-[var(--color-neutral)] mb-4">We are committed to a user-centered design process, ensuring our application truly meets the needs of its users. This commitment is guided by our comprehensive graphic charter.</p>
-                        
-                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-2 mt-4">User-Centered Design</h4>
-                        <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 space-y-1">
-                            <li>We conduct **direct, hand-to-hand user testing** to validate assumptions about ergonomics, usability, and user needs in real-world scenarios. This direct interaction allows us to gather rich, qualitative feedback, observing user behavior firsthand as they interact with "No More."</li>
-                            <li>Based on the invaluable feedback gathered from these tests, we continuously iterate on the interface and overall user experience, ensuring it evolves with our users' preferences and pain points, making the app more intuitive and effective.</li>
-                        </ul>
-
-                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-2 mt-4">High-Quality Prototyping</h4>
-                        <p class="text-[var(--color-neutral)] mb-2">Our aim is to deliver a product with an intuitive and visually appealing interface that resonates with our audience. We implement modern UI/UX principles, including responsive design for optimal viewing across devices, simplicity in navigation, and accessibility features to ensure "No More" is usable by everyone. Our design consistency is maintained through:</p>
-                        <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 space-y-1">
-                            <li><strong>Typography:</strong> We utilize the **Ubuntu** font family for all text to ensure readability across devices. Key guidelines include using "Ubuntu Bold" for headlines (sentence case, optical kerning, slightly negative tracking) and "Ubuntu Regular" or "Ubuntu Light" for body text (sentence case, optical kerning, slightly negative tracking). All text is aligned to the left with a minimum margin of 3px.</li>
-                            <li><strong>Illustrations & Icons:</strong> Our visual assets are designed to be clean, modern, and convey support and clarity, using simple geometric shapes, clear lines, and a limited color palette derived from the NoMore brand colors. They provide symbolism and conceptual clarity, always aligning with our empathetic and hopeful tone.</li>
-                            <li><strong>Photography:</strong> Photography used within the app and marketing materials will be authentic, empathetic, and inspiring, focusing on real, diverse, and relatable people. We use natural lighting, warm tones, and a sense of calm, while strictly avoiding overly dramatic, negative, or misconstrued images.</li>
-                        </ul>
-
-                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-2 mt-4">Seamless Experience</h4>
-                        <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 space-y-1">
-                            <li>We are dedicated to minimizing friction during use, focusing on efficient loading times and intuitive navigation paths to ensure a smooth user journey.</li>
-                            <li>To further support our users and ensure a truly seamless experience, we provide clear and comprehensive user documentation, including easily accessible in-app guides and a detailed FAQ section. This empowers users to quickly find answers and maximize their engagement with "No More."</li>
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">UX/UI Key Initiatives</h4>
+                        <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 mt-2 space-y-2">
+                            <li>**Mobile-first design:** Tested on real users for optimal experience.</li>
+                            <li>**Frictionless user journey:** Aim for 3-click signup process.</li>
+                            <li>**Real-time feedback:** Gathered from Discord and a dedicated beta tester group.</li>
+                            <li>**Integrated Analytics:** Utilizing Google Analytics and Hotjar for continuous optimization.</li>
+                            <li>**Frequent Iterations:** Rapid design and production pushes based on feedback.</li>
                         </ul>
                     </div>
                 </div>
@@ -436,38 +438,112 @@
                    <div id="objective-a-details" class="pt-8">
                        <h3 class="text-2xl font-bold text-[var(--color-accent-dark)] mb-4">Objective A: Increasing Visibility and Impact on Social Media</h3>
                        <p class="text-[var(--color-neutral)] mb-6">Our strategy for social media visibility and impact centers on creating highly engaging and shareable content across Instagram (`@nomore_eip`) and LinkedIn (`@nomorepro`).</p>
-                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-2 mt-4">Optimized Content Strategy</h4>
-                       <p class="text-[var(--color-neutral)] mb-4">For **Instagram**, we will develop a content calendar focusing on emotionally resonant themes, personal stories of recovery (anonymized where necessary), and interactive elements like polls, Q&As, and live sessions. We aim to leverage trending audio and visual formats to increase discoverability. Contests and collaborative campaigns with health and wellness advocates will be designed to encourage user-generated content and wider sharing, driving virality. We will strategically utilize hashtags such as `#DependenceFree` and `#NoMore` to expand our reach and connect with relevant communities.</p>
-                       <p class="text-[var(--color-neutral)] mb-6">On **LinkedIn**, our strategy will emphasize professional credibility and thought leadership. We plan to share updates on app development, insights into addiction recovery research, and announcements of new partnerships. Our content will be tailored to engage healthcare professionals, policymakers, and potential organizational partners. We will actively participate in relevant industry discussions and showcase "No More" as a vital solution in digital health. We will also incorporate relevant professional hashtags to maximize visibility within the industry.</p>
                        
-                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Ongoing Training</h4>
-                        <p class="text-[var(--color-neutral)] mb-4">To ensure effective social media management and continuous improvement, our team will undergo ongoing training:</p>
-                        <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 mt-2 space-y-2">
-                            <li>We will encourage students to train on social media management tools such as **Canva** for efficient content scheduling, creation, and visual design. Our team has actively utilized Canva for the creation of various project documents, demonstrating its effectiveness in our workflow.</li>
-                        </ul>
+                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Why These Platforms?</h4>
+                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <svg class="icon-small mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                               </svg>
+                               <p class="font-semibold text-[var(--color-primary-text)]">Instagram</p>
+                               <p class="text-sm text-[var(--color-neutral)]">Visual branding, reach among 18–34 audience. Used for motivation, testimonials, visual storytelling.</p>
+                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="15">0</span>%</p>
+                               <p class="text-xs text-[var(--color-neutral)]">Like/View Ratio Goal</p>
+                           </div>
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <svg class="icon-small mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                               </svg>
+                               <p class="font-semibold text-[var(--color-primary-text)]">Discord</p>
+                               <p class="text-sm text-[var(--color-neutral)]">Peer support, anonymous safe space. Real-time help channels, gamified roles.</p>
+                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="35">0</span>%</p>
+                               <p class="text-xs text-[var(--color-neutral)]">Weekly Engagement Goal</p>
+                           </div>
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <svg class="icon-small mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                   <rect x="2" y="9" width="4" height="12"></rect>
+                                   <circle cx="4" cy="4" r="2"></circle>
+                               </svg>
+                               <p class="font-semibold text-[var(--color-primary-text)]">LinkedIn</p>
+                               <p class="text-sm text-[var(--color-neutral)]">Professional visibility, partnerships. HR outreach, milestone sharing.</p>
+                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="10">0</span>%</p>
+                               <p class="text-xs text-[var(--color-neutral)]">Post Engagement Goal</p>
+                           </div>
+                       </div>
 
-                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Frise Chronologique de Planification Réseaux Sociaux</h4>
-                        <p class="text-[var(--color-neutral)] mb-4">Notre planification pour l'évolution de notre présence sur les réseaux sociaux se déroulera en plusieurs étapes clés :</p>
-                        <div class="relative pl-6 border-l-2 border-[var(--color-accent-medium)] space-y-6">
-                            <div class="relative">
-                                <div class="absolute -left-3 top-0 w-6 h-6 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
-                                <h5 class="text-lg font-semibold text-[var(--color-primary-text)] ml-4">Jalon 1 : Création et Lancement du Discord</h5>
-                                <p class="text-[var(--color-neutral)] ml-4">Mise en place d'un serveur Discord dédié pour créer un espace communautaire interactif. Ce jalon inclura la définition des canaux, des règles, et le lancement initial auprès des beta-testeurs et des premiers abonnés. L'objectif est de faciliter les échanges directs et le support mutuel.</p>
+                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Follower Acquisition & Security</h4>
+                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Instagram</h5>
+                               <ul class="list-disc list-inside text-[var(--color-neutral)] text-sm space-y-1">
+                                   <li>Regular content calendar</li>
+                                   <li>Influencer collaborations</li>
+                                   <li>Clear CTA in bio</li>
+                               </ul>
+                               <p class="text-xs text-[var(--color-neutral)] mt-2">Security: Manual DM screening, quick abuse reporting, strong moderation.</p>
+                           </div>
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Discord</h5>
+                               <ul class="list-disc list-inside text-[var(--color-neutral)] text-sm space-y-1">
+                                   <li>Invite gating for new users</li>
+                                   <li>Gamified roles for engagement</li>
+                                   <li>Dedicated moderation team</li>
+                               </ul>
+                               <p class="text-xs text-[var(--color-neutral)] mt-2">Security: Private server, admin/mod rights, onboarding verification.</p>
+                           </div>
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">LinkedIn</h5>
+                               <ul class="list-disc list-inside text-[var(--color-neutral)] text-sm space-y-1">
+                                   <li>Thought-leadership posts</li>
+                                   <li>Cross-promotion with partners</li>
+                                   <li>Showcasing project milestones</li>
+                               </ul>
+                               <p class="text-xs text-[var(--color-neutral)] mt-2">Security: Monitor connection requests, professional networking only.</p>
+                           </div>
+                       </div>
+
+                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Roadmap – Social Media</h4>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-item-content">
+                                    <div class="timeline-item-date">Q2: Brand Identity & Beta Recruitment</div>
+                                    <p class="text-[var(--color-neutral)]">
+                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"></path><path d="M17 9v3h3"></path><path d="M17 17l3 3-3 3"></path></svg>
+                                        Brand identity launch on all platforms.
+                                    </p>
+                                    <p class="text-[var(--color-neutral)] mt-1">
+                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8H6a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h11l4 4V8a2 2 0 0 0-2-2h-2z"></path></svg>
+                                        Beta recruitment via Instagram & LinkedIn.
+                                    </p>
+                                </div>
+                                <div class="timeline-item-point"></div>
                             </div>
-                            <div class="relative">
-                                <div class="absolute -left-3 top-0 w-6 h-6 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
-                                <h5 class="text-lg font-semibold text-[var(--color-primary-text)] ml-4">Jalon 2 : Évolution du Contenu et Diversification</h5>
-                                <p class="text-[var(--color-neutral)] ml-4">Développement de nouveaux formats de contenu (vidéos courtes, témoignages animés, infographies interactives) et diversification des sujets abordés sur Instagram et LinkedIn. Cette phase visera à maintenir l'intérêt et la pertinence, en s'appuyant sur les retours de la communauté et les analyses de performance.</p>
+
+                            <div class="timeline-item">
+                                <div class="timeline-item-content">
+                                    <div class="timeline-item-date">Q3: Discord Events & Feedback</div>
+                                    <p class="text-[var(--color-neutral)]">
+                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                        Weekly Discord events & feedback surveys.
+                                    </p>
+                                </div>
+                                <div class="timeline-item-point"></div>
                             </div>
-                            <div class="relative">
-                                <div class="absolute -left-3 top-0 w-6 h-6 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
-                                <h5 class="text-lg font-semibold text-[var(--color-primary-text)] ml-4">Jalon 3 : Engagement Plus Présent et Fidélisation</h5>
-                                <p class="text-[var(--color-neutral)] ml-4">Mise en place de campagnes d'engagement régulières (sondages, défis, événements en ligne, sessions Q&A en direct) sur toutes les plateformes. Augmentation de la fréquence des interactions directes avec les abonnés pour renforcer le sentiment d'appartenance et la fidélité à la marque "No More".</p>
+
+                            <div class="timeline-item">
+                                <div class="timeline-item-content">
+                                    <div class="timeline-item-date">Q4: KPI Performance Analytics</div>
+                                    <p class="text-[var(--color-neutral)]">
+                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8.3L12 15l-3.3-3.3L3 18"></path></svg>
+                                        KPI performance analytics displayed on site.
+                                    </p>
+                                </div>
+                                <div class="timeline-item-point"></div>
                             </div>
                         </div>
-                        <p class="text-[var(--color-neutral)] mt-4">Cette feuille de route vise à dynamiser notre présence en ligne et à construire une communauté solide et engagée autour de "No More".</p>
-
-                       <p class="text-center text-sm text-[var(--color-neutral)] mt-4">This approach aims to foster a strong community and establish "No More" as a leading voice in addiction support.</p>
                    </div>
                    
                    <div id="objective-b-details" class="pt-8">
@@ -484,6 +560,12 @@
                                     <div class="partner-node" data-partner="doctolib">Doctolib</div>
                                     <div class="partner-node" data-partner="influencers">Influencers</div>
                                     <div class="partner-node" data-partner="professional-network">Professional Network</div>
+                                    <div class="partner-node" data-partner="betterhelp">BetterHelp</div>
+                                    <div class="partner-node" data-partner="heetch">Heetch</div>
+                                    <div class="partner-node" data-partner="le-wagon">Le Wagon</div>
+                                    <div class="partner-node" data-partner="epitech">Epitech</div>
+                                    <div class="partner-node" data-partner="nightline">Nightline</div>
+                                    <div class="partner-node" data-partner="addict-aide">Addict'Aide</div>
                                 </div>
                                  <p class="text-center text-sm text-[var(--color-neutral)] mt-2">Fig 2: A visual map of our key strategic partners. Click a node to view details.</p>
                             </div>
@@ -496,6 +578,42 @@
                             </div>
                         </div>
                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategic-alignment" class="content-section">
+            <div class="bg-white p-8 rounded-lg shadow">
+                <h2 class="text-3xl font-bold text-[var(--color-primary-text)] mb-4">Strategic Alignment</h2>
+                <p class="text-lg text-[var(--color-neutral)] mb-8">Our strategies are meticulously aligned with both mandatory and complementary objectives, ensuring a comprehensive approach to project success.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#3498db] mb-4">Mandatory Objectives</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-[var(--color-neutral)]">
+                                <svg class="w-6 h-6 mr-2 text-[#3498db]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>User community development</span>
+                            </li>
+                            <li class="flex items-center text-[var(--color-neutral)]">
+                                <svg class="w-6 h-6 mr-2 text-[#3498db]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>UX/UI enhancements</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#27ae60] mb-4">Complementary Objectives</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-[var(--color-neutral)]">
+                                <span class="bg-[#27ae60] text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-2">A</span>
+                                <span>Social media visibility</span>
+                            </li>
+                            <li class="flex items-center text-[var(--color-neutral)]">
+                                <span class="bg-[#27ae60] text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-2">B</span>
+                                <span>Strategic partnerships</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -528,6 +646,11 @@
                 if (mobileNav.value !== sectionId) {
                     mobileNav.value = sectionId;
                 }
+
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
 
             navLinks.forEach(link => {
@@ -535,14 +658,12 @@
                     e.preventDefault();
                     const sectionId = e.target.dataset.section;
                     switchTab(sectionId);
-                    history.pushState(null, '', `#${sectionId}`);
                 });
             });
 
             mobileNav.addEventListener('change', (e) => {
                  const sectionId = e.target.value;
                  switchTab(sectionId);
-                 document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
             });
             
             objectiveLinks.forEach(link => {
@@ -556,8 +677,6 @@
                 });
             });
 
-            // Removed Chart.js initialization for engagementChart
-
             const partnerNodes = document.querySelectorAll('.partner-node');
             const partnerNameEl = document.getElementById('partner-name');
             const partnerContentEl = document.getElementById('partner-content');
@@ -565,23 +684,91 @@
             const partnerData = {
                 'addiction-france': {
                     name: 'Addiction France (Planned)',
-                    content: `<p class="text-[var(--color-neutral)]"><strong>Nature of Planned Partnership:</strong> Our goal is to work directly with Addiction France to maximize the reach of our application by integrating "No More" into their existing support frameworks and communication channels.</p><p class="mt-2 text-[var(--color-neutral)]"><strong>Expected Impact:</strong> To simplify the reach of professionals to individuals seeking support by including our app as a key tool in their work, thereby expanding access to care and resources.</p>`
+                    why: 'Our goal is to work directly with Addiction France to maximize the reach of our application by integrating "No More" into their existing support frameworks and communication channels.',
+                    integration: 'N/A',
+                    valueNoMore: 'N/A',
+                    valueSponsor: 'N/A',
+                    roadmap: 'Month 2: Send pitch deck'
                 },
                 'ameli': {
                     name: 'Ameli (Planned)',
-                    content: `<p class="text-[var(--color-neutral)]"><strong>Nature of Planned Partnership:</strong> Exploring mutual promotion and community outreach. We plan to collaborate on social media campaigns targeting specific demographics in need of support.</p><p class="mt-2 text-[var(--color-neutral)]"><strong>Expected Impact:</strong> To extend our reach to niche communities and validate our approach through association with a trusted organization.</p>`
+                    why: 'Exploring mutual promotion and community outreach. We plan to collaborate on social media campaigns targeting specific demographics in need of support.',
+                    integration: 'N/A',
+                    valueNoMore: 'N/A',
+                    valueSponsor: 'N/A',
+                    roadmap: 'Month 2: Send pitch deck'
                 },
                 'doctolib': {
                     name: 'Doctolib (Planned)',
-                    content: `<p class="text-[var(--color-neutral)]"><strong>Nature of Planned Partnership:</strong> Initial technical integration discussions are ongoing to create a referral pathway for users seeking professional medical help.</p><p class="mt-2 text-[var(--color-neutral)]"><strong>Expected Impact:</strong> To strengthen our service offering by bridging the gap between digital support and professional healthcare, creating a holistic recovery tool.</p>`
+                    why: 'Credible actor in digital health services',
+                    integration: 'Appointment sync for sobriety follow-ups',
+                    valueNoMore: 'Strong UX feature, health legitimacy',
+                    valueSponsor: 'Health engagement with youth (25%)',
+                    roadmap: 'Month 2: Send pitch deck, Month 4–5: Launch joint campaigns'
                 },
                 'influencers': {
                     name: 'Health & Wellness Influencers (Planned)',
-                    content: `<p class="text-[var(--color-neutral)]"><strong>Nature of Planned Partnership:</strong> We are identifying and reaching out to authentic influencers in the mental health and recovery space to share their stories and promote "No More".</p><p class="mt-2 text-[var(--color-neutral)]"><strong>Expected Impact:</strong> To drive targeted user acquisition and build social proof through trusted voices in the community.</p>`
+                    why: 'We are identifying and reaching out to authentic influencers in the mental health and recovery space to share their stories and promote "No More".',
+                    integration: 'N/A',
+                    valueNoMore: 'N/A',
+                    valueSponsor: 'N/A',
+                    roadmap: 'Month 2: Send pitch deck'
                 },
                 'professional-network': {
                     name: 'Professional Network (Active)',
-                    content: `<p class="text-[var(--color-neutral)]"><strong>Nature of Partnership:</strong> We are already in contact with several medical doctors specializing in addiction and mental health. Their expertise is essential to guarantee the quality and relevance of the information and support offered by "No More".</p><p class="mt-2 text-[var(--color-neutral)]"><strong>Expected Impact:</strong> To improve content validation, refine support protocols, facilitate direct referrals to qualified healthcare professionals, and integrate expert insights into app development.</p>`
+                    why: 'We are already in contact with several medical doctors specializing in addiction and mental health. Their expertise is essential to guarantee the quality and relevance of the information and support offered by "No More".',
+                    integration: 'N/A',
+                    valueNoMore: 'Validate Content Accuracy, Refine Support Protocols, Facilitate Referrals, Provide Expert Insights',
+                    valueSponsor: 'N/A',
+                    roadmap: 'N/A'
+                },
+                'betterhelp': {
+                    name: 'BetterHelp (Planned)',
+                    why: 'Alignment on mental wellness, large visibility',
+                    integration: 'Discounted sessions in-app, branded mental health day',
+                    valueNoMore: 'Mental health boost, credibility',
+                    valueSponsor: '30% user conversion funnel (B2C)',
+                    roadmap: 'Month 2: Send pitch deck, Month 3: Setup MVP integrations'
+                },
+                'heetch': {
+                    name: 'Heetch (Planned)',
+                    why: 'Social student-friendly sponsor for app exposure',
+                    integration: 'Ride discounts for safe events via QR codes',
+                    valueNoMore: 'Safer events, social traction',
+                    valueSponsor: 'Increased rides from student group (12%)',
+                    roadmap: 'Month 2: Send pitch deck, Month 4–5: Launch joint campaigns'
+                },
+                'le-wagon': {
+                    name: 'Le Wagon (Planned)',
+                    why: 'Tech-savvy incubator, supports innovation',
+                    integration: 'Tech workshops, cross-promotion, guest speaker collabs',
+                    valueNoMore: 'Community boost, media reach',
+                    valueSponsor: 'Association with real-world impact (20%)',
+                    roadmap: 'Month 2: Send pitch deck, Month 3: Setup MVP integrations'
+                },
+                'epitech': {
+                    name: 'Epitech (Active)',
+                    why: 'Academic credibility, pilot launch',
+                    integration: 'N/A',
+                    valueNoMore: '+20% credibility, beta testers',
+                    valueSponsor: 'N/A',
+                    roadmap: 'Q2 newsletter, Q3 pilot, Q4 feedback'
+                },
+                'nightline': {
+                    name: 'Nightline (Planned)',
+                    why: 'Mental health ally',
+                    integration: 'N/A',
+                    valueNoMore: '+25% trust perception',
+                    valueSponsor: 'N/A',
+                    roadmap: 'Q2 IG story campaign, Q3 Discord AMA, Q4 impact report'
+                },
+                'addict-aide': {
+                    name: 'Addict’Aide (Planned)',
+                    why: 'Expert content on addiction',
+                    integration: 'N/A',
+                    valueNoMore: '+30% content authority',
+                    valueSponsor: 'N/A',
+                    roadmap: 'Q2 blog, Q3 campaign, Q4 performance review'
                 }
             };
             
@@ -590,13 +777,67 @@
                     const partnerId = node.dataset.partner;
                     const data = partnerData[partnerId];
 
+                    let contentHtml = `<p class="text-[var(--color-neutral)]"><strong>Why This Partner?</strong> ${data.why}</p>`;
+                    if (data.integration && data.integration !== 'N/A') {
+                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Integration Model:</strong> ${data.integration}</p>`;
+                    }
+                    if (data.valueNoMore && data.valueNoMore !== 'N/A') {
+                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> ${data.valueNoMore}</p>`;
+                    }
+                    if (data.valueSponsor && data.valueSponsor !== 'N/A') {
+                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Value for Partner:</strong> ${data.valueSponsor}</p>`;
+                    }
+                    if (data.roadmap && data.roadmap !== 'N/A') {
+                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Roadmap Action:</strong> ${data.roadmap}</p>`;
+                    }
+
                     partnerNameEl.textContent = data.name;
-                    partnerContentEl.innerHTML = data.content;
+                    partnerContentEl.innerHTML = contentHtml;
 
                     partnerNodes.forEach(n => n.classList.remove('ring-2', 'ring-[var(--color-highlight)]'));
                     node.classList.add('ring-2', 'ring-[var(--color-highlight)]');
                 });
             });
+
+            const animateNumbers = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animatedNumbers = entry.target.querySelectorAll('.animated-number');
+                        animatedNumbers.forEach(num => {
+                            const target = parseInt(num.dataset.target);
+                            let current = 0;
+                            const increment = target / 100;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    num.textContent = target;
+                                    clearInterval(timer);
+                                } else {
+                                    num.textContent = Math.floor(current);
+                                }
+                            }, 10);
+                        });
+
+                        const valueBars = entry.target.querySelectorAll('.value-bar');
+                        valueBars.forEach(bar => {
+                            const value = parseInt(bar.dataset.value);
+                            bar.style.width = `${value}%`;
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(animateNumbers, {
+                threshold: 0.5
+            });
+
+            document.querySelectorAll('#objective-a-details, #objective-b-details').forEach(section => {
+                observer.observe(section);
+            });
+
+            const initialSection = window.location.hash ? window.location.hash.substring(1) : 'introduction';
+            switchTab(initialSection);
         });
     </script>
 </body>
