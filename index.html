@@ -18,6 +18,11 @@
             --color-border: #cd4d00;
             --color-highlight: #ff8533;
             --color-neutral: #994d00;
+            /* Adjusted for the provided palette for consistency */
+            --color-mandatory-heading: #e65c00; /* Darker orange/red for headings */
+            --color-mandatory-icon: #ff9900; /* Medium orange for icons/highlights */
+            --color-complementary-heading: #ff8533; /* Highlight orange for headings */
+            --color-complementary-icon: #ffb84d; /* Light orange for icons/highlights */
         }
 
         body {
@@ -187,6 +192,182 @@
             vertical-align: middle;
             margin-right: 8px;
         }
+        .icon-medium {
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .icon-large {
+            width: 48px;
+            height: 48px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        /* Specific styles for sponsor cards */
+        .sponsor-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            border: 1px solid var(--color-border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            white-space: normal; /* Allow text to wrap within card */
+        }
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .sponsor-logo {
+            height: 60px;
+            width: 60px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--color-accent-light);
+            color: white;
+        }
+        .sponsor-logo svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--color-primary-text); /* Use primary text color for icons inside circles */
+        }
+        .sponsor-value-bar {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 8px;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .sponsor-value-fill {
+            height: 100%;
+            background-color: var(--color-accent-medium); /* Changed to accent-medium for consistency */
+            width: 0;
+            transition: width 1s ease-out;
+        }
+        .roadmap-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 5px;
+            font-size: 0.875rem; /* text-sm */
+            color: var(--color-neutral);
+        }
+        .roadmap-item svg {
+            flex-shrink: 0;
+            margin-right: 8px;
+            color: var(--color-accent-dark);
+        }
+
+        .kpi-chart-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 15px;
+            margin-bottom: 10px;
+        }
+        .kpi-chart-bar {
+            height: 100%;
+            background-color: var(--color-accent-medium); /* Changed to accent-medium for consistency */
+            width: 0;
+            transition: width 1s ease-out;
+        }
+        /* For horizontal scrolling on mobile for sponsor grid */
+        @media (max-width: 640px) {
+            .sponsor-grid-container {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px; /* Add some padding for scrollbar */
+            }
+            .sponsor-card {
+                width: 80%; /* Adjust card width for better mobile scrolling */
+                display: inline-block;
+                margin-right: 16px; /* Space between cards */
+            }
+        }
+
+        /* SVG Animations */
+        .funnel-svg .flow-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 2s linear forwards;
+            animation-delay: 0.5s;
+        }
+        .funnel-svg .data-point {
+            opacity: 0;
+            animation: fadeInScale 1s forwards;
+            animation-delay: 1.5s;
+        }
+        .funnel-svg .data-point:nth-child(2) { animation-delay: 1.7s; }
+        .funnel-svg .data-point:nth-child(3) { animation-delay: 1.9s; }
+        .funnel-svg .data-point:nth-child(4) { animation-delay: 2.1s; }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .wireframe-svg .line {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawLine 1.5s ease-out forwards;
+        }
+        .wireframe-svg .line:nth-child(2) { animation-delay: 0.2s; }
+        .wireframe-svg .line:nth-child(3) { animation-delay: 0.4s; }
+        .wireframe-svg .line:nth-child(4) { animation-delay: 0.6s; }
+        .wireframe-svg .line:nth-child(5) { animation-delay: 0.8s; }
+        .wireframe-svg .rect {
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .faq-svg .document-outline {
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: drawLine 1.5s ease-out forwards;
+        }
+        .faq-svg .question-mark {
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: slideInFade 0.8s forwards;
+            animation-delay: 1.2s;
+        }
+        .faq-svg .answer-lines line {
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: drawLine 0.8s forwards;
+            animation-delay: 1.5s;
+        }
+        .faq-svg .answer-lines line:nth-child(2) { animation-delay: 1.7s; }
+        .faq-svg .answer-lines line:nth-child(3) { animation-delay: 1.9s; }
+
+        @keyframes slideInFade {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-[var(--color-background-light)] text-[var(--color-primary-text)]">
@@ -203,12 +384,14 @@
                     <a href="#introduction" data-section="introduction" class="nav-link active font-medium text-[var(--color-neutral)] hover:text-[var(--color-accent-dark)]">Introduction</a>
                     <a href="#mandatory" data-section="mandatory" class="nav-link font-medium text-[var(--color-neutral)] hover:text-[var(--color-accent-dark)]">Mandatory Objectives</a>
                     <a href="#complementary" data-section="complementary" class="nav-link font-medium text-[var(--color-neutral)] hover:text-[var(--color-accent-dark)]">Complementary Objectives</a>
+                    <a href="#strategic-alignment" data-section="strategic-alignment" class="nav-link font-medium text-[var(--color-neutral)] hover:text-[var(--color-accent-dark)]">Strategic Alignment</a>
                 </nav>
                  <div class="md:hidden">
                     <select id="mobile-nav" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--color-accent-medium)] focus:ring-[var(--color-accent-medium)]">
                         <option value="introduction">Introduction</option>
                         <option value="mandatory">Mandatory Objectives</option>
                         <option value="complementary">Complementary Objectives</option>
+                        <option value="strategic-alignment">Strategic Alignment</option>
                     </select>
                 </div>
             </div>
@@ -318,9 +501,10 @@
                 
                 <div class="space-y-8">
                     <div class="border border-[var(--color-border)] rounded-lg p-6">
-                        <h3 class="text-2xl font-semibold text-[var(--color-accent-dark)] mb-3">1. Developing and Retaining a User Community</h3>
+                        <h3 class="text-2xl font-semibold text-[var(--color-mandatory-heading)] mb-3">Grow and Engage Our Community</h3>
                         <p class="text-[var(--color-neutral)] mb-4">Our strategy involves creating a consistent brand identity and a tailored content plan to engage our target audience. We are actively developing a strategy to recruit beta testers and build a foundational community on Instagram and LinkedIn.</p>
                         
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Visual Identity</h4>
                         <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
                             <div class="w-32 h-32 flex items-center justify-center rounded-lg p-2 shadow-md border border-[var(--color-border)] bg-black">
                                 <img src="https://placehold.co/128x128/000000/FFFFFF?text=NO%0AMORE" alt="No More Logo" class="max-w-full max-h-full object-contain">
@@ -339,74 +523,156 @@
                         </div>
                         <p class="text-center text-sm text-[var(--color-neutral)] mb-6">Our brand identity, including our logo and a warm color palette, is designed to convey support and hope.</p>
 
-                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                            <div class="bg-[var(--color-accent-light)]/[0.1] p-4 rounded-lg">
-                                <p class="text-3xl font-bold text-[var(--color-accent-dark)]">Goal: 250+</p>
-                                <p class="text-sm font-medium text-[var(--color-primary-text)]">Beta Testers Planned</p>
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Social Media Strategy</h4>
+                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <svg class="icon-large mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                               </svg>
+                               <p class="font-semibold text-[var(--color-primary-text)]">Instagram</p>
+                               <p class="text-sm text-[var(--color-neutral)]">Visual branding, reach among 18–34 audience. Motivation, testimonials, visual storytelling.</p>
+                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="15">0</span>%</p>
+                               <p class="text-xs text-[var(--color-neutral)]">Like/View Ratio Goal</p>
+                           </div>
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <svg class="icon-large mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                               </svg>
+                               <p class="font-semibold text-[var(--color-primary-text)]">Discord</p>
+                               <p class="text-sm text-[var(--color-neutral)]">Peer support, anonymous safe space. Real-time help channels, gamified roles.</p>
+                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="35">0</span>%</p>
+                               <p class="text-xs text-[var(--color-neutral)]">Weekly Engagement Goal</p>
+                           </div>
+                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
+                               <svg class="icon-large mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                   <rect x="2" y="9" width="4" height="12"></rect>
+                                   <circle cx="4" cy="4" r="2"></circle>
+                               </svg>
+                               <p class="font-semibold text-[var(--color-primary-text)]">LinkedIn</p>
+                               <p class="text-sm text-[var(--color-neutral)]">Professional visibility, partnerships. HR outreach, milestone sharing.</p>
+                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="10">0</span>%</p>
+                               <p class="text-xs text-[var(--color-neutral)]">Post Engagement Goal</p>
+                           </div>
+                       </div>
+
+                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Beta Testers Recruitment</h4>
+                       <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)] flex flex-col items-center justify-center">
+                           <p class="text-sm text-[var(--color-neutral)] mb-4">Our recruitment process involves targeted social media outreach, followed by structured onboarding and feedback collection.</p>
+                           <div class="w-full max-w-xs h-40 mb-4 flex items-center justify-center">
+                               <svg class="funnel-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+                                   <defs>
+                                       <linearGradient id="funnelGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                           <stop offset="0%" stop-color="var(--color-accent-medium)"/>
+                                           <stop offset="100%" stop-color="var(--color-accent-dark)"/>
+                                       </linearGradient>
+                                   </defs>
+                                   <path class="flow-path" d="M10 10 L90 10 L70 90 L30 90 Z" fill="none" stroke="url(#funnelGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                   <circle class="data-point" cx="50" cy="30" r="5" fill="var(--color-highlight)"/>
+                                   <circle class="data-point" cx="50" cy="50" r="5" fill="var(--color-highlight)"/>
+                                   <circle class="data-point" cx="50" cy="70" r="5" fill="var(--color-highlight)"/>
+                               </svg>
+                           </div>
+                           <div class="timeline w-full">
+                               <div class="timeline-item">
+                                   <div class="timeline-item-content w-full">
+                                       <div class="timeline-item-date">Q2: Social Media Recruitment</div>
+                                       <p class="text-[var(--color-neutral)]">
+                                           <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"></path><path d="M17 9v3h3"></path><path d="M17 17l3 3-3 3"></path></svg>
+                                           Launch targeted campaigns on Instagram and LinkedIn.
+                                       </p>
+                                   </div>
+                                   <div class="timeline-item-point"></div>
+                               </div>
+                               <div class="timeline-item">
+                                   <div class="timeline-item-content w-full">
+                                       <div class="timeline-item-date">Q3: Discord Onboarding & Rewards</div>
+                                       <p class="text-[var(--color-neutral)]">
+                                           <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                           Onboard beta testers to Discord, implement reward system.
+                                       </p>
+                                   </div>
+                                   <div class="timeline-item-point"></div>
+                               </div>
+                               <div class="timeline-item">
+                                   <div class="timeline-item-content w-full">
+                                       <div class="timeline-item-date">Q4: Feedback Collection</div>
+                                       <p class="text-[var(--color-neutral)]">
+                                           <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2L15 8.5 8.5 2 2 8.5 8.5 15 2 21.5 8.5 21.5 15 15 21.5 21.5 21.5 15 15 8.5 21.5 2z"></path></svg>
+                                           Structured surveys and direct interviews for feedback.
+                                       </p>
+                                   </div>
+                                   <div class="timeline-item-point"></div>
+                               </div>
+                           </div>
+                       </div>
+                    </div>
+
+                    <div class="border border-[var(--color-border)] rounded-lg p-6">
+                        <h3 class="text-2xl font-semibold text-[var(--color-mandatory-heading)] mb-3">Build a User-Centric Experience</h3>
+                        <p class="text-[var(--color-neutral)] mb-4">We are committed to a user-centered design process, ensuring our application truly meets the needs of its users. This commitment is guided by our comprehensive graphic charter.</p>
+                        
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">User Testing</h4>
+                        <p class="text-[var(--color-neutral)] mb-4">Our design process follows a continuous loop of testing, feedback, and iteration to ensure optimal user experience.</p>
+                        <div class="flex items-center justify-center space-x-4 mb-6">
+                            <div class="flex flex-col items-center p-2">
+                                <svg class="icon-large text-[var(--color-mandatory-icon)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                </svg>
+                                <p class="text-sm text-[var(--color-neutral)]">Test</p>
                             </div>
-                            <div class="bg-[var(--color-accent-light)]/[0.1] p-4 rounded-lg">
-                                <p class="text-3xl font-bold text-[var(--color-accent-dark)]">Goal: 1000+</p>
-                                <p class="text-sm font-medium text-[var(--color-primary-text)]">Community Members</p>
+                            <svg class="hidden md:block w-8 h-8 text-[var(--color-neutral)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            <div class="flex flex-col items-center p-2">
+                                <svg class="icon-large text-[var(--color-mandatory-icon)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                                <p class="text-sm text-[var(--color-neutral)]">Feedback</p>
                             </div>
-                            <div class="bg-[var(--color-accent-light)]/[0.1] p-4 rounded-lg">
-                                <p class="text-3xl font-bold text-[var(--color-accent-dark)]">Goal: 7.5%</p>
-                                <p class="text-sm font-medium text-[var(--color-primary-text)]">Weekly Engagement Rate</p>
+                            <svg class="hidden md:block w-8 h-8 text-[var(--color-neutral)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            <div class="flex flex-col items-center p-2">
+                                <svg class="icon-large text-[var(--color-mandatory-icon)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004 12c0 2.21.894 4.202 2.342 5.656M20 20v-5h-.582m0 0a8.001 8.001 0 01-15.356-2m15.356 2H15"></path></svg>
+                                <p class="text-sm text-[var(--color-neutral)]">Iterate</p>
                             </div>
                         </div>
 
-                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Planned Weekly Social Media Schedule</h4>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full bg-white border border-[var(--color-border)] rounded-lg shadow-sm">
-                                <thead>
-                                    <tr class="bg-[var(--color-accent-light)]/[0.1]">
-                                        <th class="py-3 px-4 text-left text-sm font-semibold text-[var(--color-primary-text)] border-b border-[var(--color-border)]">Day</th>
-                                        <th class="py-3 px-4 text-left text-sm font-semibold text-[var(--color-primary-text)] border-b border-[var(--color-border)]">Time</th>
-                                        <th class="py-3 px-4 text-left text-sm font-semibold text-[var(--color-primary-text)] border-b border-[var(--color-border)]">Platform(s)</th>
-                                        <th class="py-3 px-4 text-left text-sm font-semibold text-[var(--color-primary-text)] border-b border-[var(--color-border)]">Content Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">Monday</td>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">6 PM</td>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">Instagram, LinkedIn</td>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">General Promotion</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">Wednesday</td>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">All Day</td>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">Instagram, LinkedIn</td>
-                                        <td class="py-3 px-4 border-b border-[var(--color-border)] text-[var(--color-neutral)]">FAQ Post</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-3 px-4 text-[var(--color-neutral)]">Thursday</td>
-                                        <td class="py-3 px-4 text-[var(--color-neutral)]">2 PM</td>
-                                        <td class="py-3 px-4 text-[var(--color-neutral)]">LinkedIn</td>
-                                        <td class="py-3 px-4 text-[var(--color-neutral)]">Beta Tester Recruitment</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">UI/UX Improvements</h4>
+                        <div class="w-full max-w-md h-40 mb-4 flex items-center justify-center">
+                            <svg class="wireframe-svg" viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+                                <rect class="rect" x="10" y="10" width="180" height="80" fill="none" stroke="var(--color-primary-text)" stroke-width="2" rx="5" ry="5"/>
+                                <line class="line" x1="20" y1="20" x2="80" y2="20" stroke="var(--color-accent-medium)" stroke-width="2"/>
+                                <line class="line" x1="20" y1="30" x2="70" y2="30" stroke="var(--color-accent-medium)" stroke-width="2"/>
+                                <rect class="rect" x="20" y="45" width="40" height="15" fill="var(--color-accent-light)" stroke="var(--color-accent-medium)" stroke-width="1" rx="3" ry="3"/>
+                                <rect class="rect" x="70" y="45" width="40" height="15" fill="var(--color-accent-light)" stroke="var(--color-accent-medium)" stroke-width="1" rx="3" ry="3"/>
+                                <line class="line" x1="20" y1="70" x2="180" y2="70" stroke="var(--color-accent-medium)" stroke-width="2"/>
+                            </svg>
                         </div>
-                        <p class="text-center text-sm text-[var(--color-neutral)] mt-4">This consistent schedule ensures regular engagement with our target audiences and supports our growth objectives.</p>
-
-                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Beta Tester Reward Strategy (Non-Monetary)</h4>
-                        <p class="text-[var(--color-neutral)]">Given our current resource constraints, we've designed a simple yet effective reward system for our beta testers that focuses on recognition and influence:</p>
                         <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 mt-2 space-y-2">
-                            <li><strong>Early Access & Exclusive Features:</strong> Beta testers will be the first to experience new features and improvements before they are released to the wider public, giving them a privileged status.</li>
-                            <li><strong>Direct Influence on Development:</strong> We will actively solicit and prioritize feedback from our beta testers. Their suggestions and bug reports will directly shape the future development of "No More," giving them a sense of ownership and impact.</li>
-                            <li><strong>Public Recognition (Optional):</strong> With their consent, top contributors and most active beta testers will be publicly acknowledged on our social media channels or within the app itself (e.g., in a "Special Thanks" section), providing valuable exposure and recognition.</li>
-                            <li><strong>Community Leadership:</strong> Opportunities will be created for highly engaged beta testers to become community moderators or mentors within the app, fostering a sense of leadership and responsibility.</li>
+                            <li>**Responsive Design:** Optimized for all devices.</li>
+                            <li>**Streamlined Onboarding:** Quick and intuitive signup.</li>
+                            <li>**Performance Enhancements:** Faster loading times.</li>
+                            <li>**Accessibility Features:** Ensuring usability for all.</li>
                         </ul>
-                        <p class="text-[var(--color-neutral)] mt-4">This strategy aims to build a loyal and highly engaged beta community by valuing their contributions and making them integral to the project's success.</p>
 
-                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">UX/UI Key Initiatives</h4>
-                        <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 mt-2 space-y-2">
-                            <li>**Mobile-first design:** Tested on real users for optimal experience.</li>
-                            <li>**Frictionless user journey:** Aim for 3-click signup process.</li>
-                            <li>**Real-time feedback:** Gathered from Discord and a dedicated beta tester group.</li>
-                            <li>**Integrated Analytics:** Utilizing Google Analytics and Hotjar for continuous optimization.</li>
-                            <li>**Frequent Iterations:** Rapid design and production pushes based on feedback.</li>
-                        </ul>
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Documentation</h4>
+                        <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)] flex flex-col items-center justify-center text-center">
+                            <div class="w-full max-w-xs h-40 mb-4 flex items-center justify-center">
+                                <svg class="faq-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+                                    <rect class="document-outline" x="15" y="15" width="70" height="70" rx="5" ry="5" fill="none" stroke="var(--color-primary-text)" stroke-width="2"/>
+                                    <path class="question-mark" d="M45 30 C45 25 50 20 55 25 C60 30 55 35 55 40 L50 45 L50 50" fill="none" stroke="var(--color-accent-medium)" stroke-width="3" stroke-linecap="round"/>
+                                    <circle class="question-mark" cx="50" cy="55" r="3" fill="var(--color-accent-medium)"/>
+                                    <g class="answer-lines">
+                                        <line x1="30" y1="70" x2="70" y2="70" stroke="var(--color-accent-light)" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="30" y1="75" x2="60" y2="75" stroke="var(--color-accent-light)" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="30" y1="80" x2="50" y2="80" stroke="var(--color-accent-light)" stroke-width="2" stroke-linecap="round"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="font-semibold text-[var(--color-primary-text)] mt-2">Comprehensive Guides & FAQs</p>
+                            <p class="text-sm text-[var(--color-neutral)]">Easy access to in-app guides and detailed FAQ sections for seamless user support.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -436,145 +702,196 @@
 
                 <div id="objective-details-container" class="space-y-12">
                    <div id="objective-a-details" class="pt-8">
-                       <h3 class="text-2xl font-bold text-[var(--color-accent-dark)] mb-4">Objective A: Increasing Visibility and Impact on Social Media</h3>
+                       <h3 class="text-2xl font-bold text-[var(--color-complementary-heading)] mb-4">Increasing Visibility on Social Media</h3>
                        <p class="text-[var(--color-neutral)] mb-6">Our strategy for social media visibility and impact centers on creating highly engaging and shareable content across Instagram (`@nomore_eip`) and LinkedIn (`@nomorepro`).</p>
                        
-                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Why These Platforms?</h4>
-                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
-                               <svg class="icon-small mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                               </svg>
-                               <p class="font-semibold text-[var(--color-primary-text)]">Instagram</p>
-                               <p class="text-sm text-[var(--color-neutral)]">Visual branding, reach among 18–34 audience. Used for motivation, testimonials, visual storytelling.</p>
-                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="15">0</span>%</p>
-                               <p class="text-xs text-[var(--color-neutral)]">Like/View Ratio Goal</p>
-                           </div>
-                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
-                               <svg class="icon-small mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                               </svg>
-                               <p class="font-semibold text-[var(--color-primary-text)]">Discord</p>
-                               <p class="text-sm text-[var(--color-neutral)]">Peer support, anonymous safe space. Real-time help channels, gamified roles.</p>
-                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="35">0</span>%</p>
-                               <p class="text-xs text-[var(--color-neutral)]">Weekly Engagement Goal</p>
-                           </div>
-                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
-                               <svg class="icon-small mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                   <rect x="2" y="9" width="4" height="12"></rect>
-                                   <circle cx="4" cy="4" r="2"></circle>
-                               </svg>
-                               <p class="font-semibold text-[var(--color-primary-text)]">LinkedIn</p>
-                               <p class="text-sm text-[var(--color-neutral)]">Professional visibility, partnerships. HR outreach, milestone sharing.</p>
-                               <p class="text-lg font-bold text-[var(--color-accent-dark)] mt-2"><span class="animated-number" data-target="10">0</span>%</p>
-                               <p class="text-xs text-[var(--color-neutral)]">Post Engagement Goal</p>
-                           </div>
+                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4">Content Strategy</h4>
+                                <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 mt-2 space-y-2">
+                                    <li>**Weekly Instagram posts:** Reels, carousels, testimonials.</li>
+                                    <li>**Discord engagement events:** AMA, daily check-ins.</li>
+                                    <li>**LinkedIn updates:** Impact reports, partnerships.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4">Target Metrics</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-center">
+                                        <svg class="icon-small mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                        <p class="text-[var(--color-neutral)]">Instagram: <span class="font-bold animated-number" data-target="15">0</span>% like/view ratio</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg class="icon-small mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                        <p class="text-[var(--color-neutral)]">Discord: <span class="font-bold animated-number" data-target="35">0</span>% weekly active engagement</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg class="icon-small mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                        <p class="text-[var(--color-neutral)]">LinkedIn: <span class="font-bold animated-number" data-target="10">0</span>% engagement/post</p>
+                                    </div>
+                                </div>
+                            </div>
                        </div>
 
-                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Follower Acquisition & Security</h4>
-                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
-                               <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Instagram</h5>
-                               <ul class="list-disc list-inside text-[var(--color-neutral)] text-sm space-y-1">
-                                   <li>Regular content calendar</li>
-                                   <li>Influencer collaborations</li>
-                                   <li>Clear CTA in bio</li>
-                               </ul>
-                               <p class="text-xs text-[var(--color-neutral)] mt-2">Security: Manual DM screening, quick abuse reporting, strong moderation.</p>
-                           </div>
-                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
-                               <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Discord</h5>
-                               <ul class="list-disc list-inside text-[var(--color-neutral)] text-sm space-y-1">
-                                   <li>Invite gating for new users</li>
-                                   <li>Gamified roles for engagement</li>
-                                   <li>Dedicated moderation team</li>
-                               </ul>
-                               <p class="text-xs text-[var(--color-neutral)] mt-2">Security: Private server, admin/mod rights, onboarding verification.</p>
-                           </div>
-                           <div class="bg-white p-6 rounded-lg shadow border border-[var(--color-border)]">
-                               <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">LinkedIn</h5>
-                               <ul class="list-disc list-inside text-[var(--color-neutral)] text-sm space-y-1">
-                                   <li>Thought-leadership posts</li>
-                                   <li>Cross-promotion with partners</li>
-                                   <li>Showcasing project milestones</li>
-                               </ul>
-                               <p class="text-xs text-[var(--color-neutral)] mt-2">Security: Monitor connection requests, professional networking only.</p>
-                           </div>
-                       </div>
-
-                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Roadmap – Social Media</h4>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-item-content">
-                                    <div class="timeline-item-date">Q2: Brand Identity & Beta Recruitment</div>
-                                    <p class="text-[var(--color-neutral)]">
-                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"></path><path d="M17 9v3h3"></path><path d="M17 17l3 3-3 3"></path></svg>
-                                        Brand identity launch on all platforms.
-                                    </p>
-                                    <p class="text-[var(--color-neutral)] mt-1">
-                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8H6a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h11l4 4V8a2 2 0 0 0-2-2h-2z"></path></svg>
-                                        Beta recruitment via Instagram & LinkedIn.
-                                    </p>
-                                </div>
-                                <div class="timeline-item-point"></div>
-                            </div>
-
-                            <div class="timeline-item">
-                                <div class="timeline-item-content">
-                                    <div class="timeline-item-date">Q3: Discord Events & Feedback</div>
-                                    <p class="text-[var(--color-neutral)]">
-                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                        Weekly Discord events & feedback surveys.
-                                    </p>
-                                </div>
-                                <div class="timeline-item-point"></div>
-                            </div>
-
-                            <div class="timeline-item">
-                                <div class="timeline-item-content">
-                                    <div class="timeline-item-date">Q4: KPI Performance Analytics</div>
-                                    <p class="text-[var(--color-neutral)]">
-                                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8.3L12 15l-3.3-3.3L3 18"></path></svg>
-                                        KPI performance analytics displayed on site.
-                                    </p>
-                                </div>
-                                <div class="timeline-item-point"></div>
-                            </div>
-                        </div>
+                       <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Tools Used</h4>
+                       <ul class="list-disc list-inside text-[var(--color-neutral)] ml-4 mt-2 space-y-2">
+                           <li>**Meta Business Suite:** For Instagram management.</li>
+                           <li>**Google Analytics:** For website traffic and user behavior.</li>
+                           <li>**Hootsuite:** For social media scheduling and monitoring.</li>
+                           <li>**Canva:** For visual identity and content creation.</li>
+                           <li>**Internal KPI dashboard:** (to be implemented Q4)</li>
+                       </ul>
                    </div>
                    
                    <div id="objective-b-details" class="pt-8">
-                        <h3 class="text-2xl font-bold text-[var(--color-accent-dark)] mb-4">Objective B: Establishing Strategic Partnerships</h3>
-                        <p class="text-[var(--color-neutral)] mb-8">Our strategy is to build a robust ecosystem of partners that provide synergistic value. We target organizations aligned with our mission to enhance credibility and extend our reach. Click on a partner to see more details about our planned collaboration.</p>
+                        <h3 class="text-2xl font-bold text-[var(--color-complementary-heading)] mb-4">Establishing Strategic Partnerships</h3>
+                        <p class="text-lg text-[var(--color-neutral)] mb-8">Our strategy is to build a robust ecosystem of partners that provide synergistic value. We target organizations aligned with our mission to enhance credibility and extend our reach.</p>
                         
-                        <div class="flex flex-col lg:flex-row gap-8">
-                            <div class="w-full lg:w-1/2">
-                                <div id="partner-diagram" class="relative bg-white rounded-lg p-8 h-auto flex flex-col items-center justify-center border border-[var(--color-border)]">
-                                    <div class="w-24 h-24 bg-[var(--color-accent-dark)] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg mb-8">No More</div>
-                                    
-                                    <div class="partner-node" data-partner="addiction-france">Addiction France</div>
-                                    <div class="partner-node" data-partner="ameli">Ameli</div>
-                                    <div class="partner-node" data-partner="doctolib">Doctolib</div>
-                                    <div class="partner-node" data-partner="influencers">Influencers</div>
-                                    <div class="partner-node" data-partner="professional-network">Professional Network</div>
-                                    <div class="partner-node" data-partner="betterhelp">BetterHelp</div>
-                                    <div class="partner-node" data-partner="heetch">Heetch</div>
-                                    <div class="partner-node" data-partner="le-wagon">Le Wagon</div>
-                                    <div class="partner-node" data-partner="epitech">Epitech</div>
-                                    <div class="partner-node" data-partner="nightline">Nightline</div>
-                                    <div class="partner-node" data-partner="addict-aide">Addict'Aide</div>
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4">Strategic Partners Overview</h4>
+                        <div class="sponsor-grid-container">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- Addict’Aide -->
+                                <div class="sponsor-card">
+                                    <div class="sponsor-logo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 7v6l4 2"></path></svg>
+                                    </div>
+                                    <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Addict’Aide (Addictions France)</h5>
+                                    <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> National expert on addiction prevention.</p>
+                                    <p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> +<span class="animated-number" data-target="30">0</span>% content credibility</p>
+                                    <div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="30"></div></div>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> Modern outreach to youth audience.</p>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                                    <ul class="list-none text-left w-full mt-1 space-y-1">
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q2 – resource content</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q3 – campaign</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q4 – joint report</li>
+                                    </ul>
                                 </div>
-                                 <p class="text-center text-sm text-[var(--color-neutral)] mt-2">Fig 2: A visual map of our key strategic partners. Click a node to view details.</p>
-                            </div>
+                                
+                                <!-- Doctolib -->
+                                <div class="sponsor-card">
+                                    <div class="sponsor-logo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    </div>
+                                    <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Doctolib</h5>
+                                    <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> Trusted digital health platform.</p>
+                                    <p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> Enhanced access to care professionals</p>
+                                    <div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="25"></div></div>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> CSR through support for sobriety & mental health.</p>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                                    <ul class="list-none text-left w-full mt-1 space-y-1">
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q2 – referral system</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q3 – booking bridge</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q4 – UX feedback</li>
+                                    </ul>
+                                </div>
 
-                            <div id="partner-details" class="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-inner border border-[var(--color-border)]">
-                                <h4 id="partner-name" class="text-xl font-bold text-[var(--color-primary-text)] mb-3">Select a Partner</h4>
-                                <div id="partner-content">
-                                    <p class="text-[var(--color-neutral)]">Details about the selected planned partnership will appear here.</p>
+                                <!-- Ameli -->
+                                <div class="sponsor-card">
+                                    <div class="sponsor-logo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                    </div>
+                                    <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Ameli (Assurance Maladie)</h5>
+                                    <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> Institutional health credibility.</p>
+                                    <p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> User trust and legitimacy (+<span class="animated-number" data-target="25">0</span>% trust)</p>
+                                    <div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="25"></div></div>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> Connection with preventive tech services.</p>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                                    <ul class="list-none text-left w-full mt-1 space-y-1">
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q2 – informational redirect</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q3 – newsletter feature</li>
+                                    </ul>
                                 </div>
+
+                                <!-- Epitech -->
+                                <div class="sponsor-card">
+                                    <div class="sponsor-logo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 5-10 5-10-5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                                    </div>
+                                    <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Epitech</h5>
+                                    <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> Academic and technical backbone.</p>
+                                    <p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> Early access to beta testers, +<span class="animated-number" data-target="20">0</span>% credibility</p>
+                                    <div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="20"></div></div>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> EIP visibility, student mental health impact.</p>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                                    <ul class="list-none text-left w-full mt-1 space-y-1">
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q2 – communication to students</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q3 – feedback loop</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Certified Professionals -->
+                                <div class="sponsor-card">
+                                    <div class="sponsor-logo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    </div>
+                                    <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Certified Professionals</h5>
+                                    <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> Mental health & addiction recovery legitimacy.</p>
+                                    <p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> Trusted support network</p>
+                                    <div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="35"></div></div>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> Platform visibility & outreach.</p>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                                    <ul class="list-none text-left w-full mt-1 space-y-1">
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q2 – registration system</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q3 – expert AMAs on Discord</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Influencers -->
+                                <div class="sponsor-card">
+                                    <div class="sponsor-logo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path></svg>
+                                    </div>
+                                    <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Influencers (Micro-influencers)</h5>
+                                    <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> Boost awareness via authentic reach.</p>
+                                    <p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> +<span class="animated-number" data-target="40">0</span>% exposure in key demographics</p>
+                                    <div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="40"></div></div>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> Meaningful cause alignment.</p>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                                    <ul class="list-none text-left w-full mt-1 space-y-1">
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q2 – first campaign</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q3 – story series</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q4 – community challenges</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Nightline -->
+                                <div class="sponsor-card">
+                                    <div class="sponsor-logo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                                    </div>
+                                    <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">Nightline</h5>
+                                    <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> Mental health ally.</p>
+                                    <p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> +<span class="animated-number" data-target="25">0</span>% trust perception</p>
+                                    <div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="25"></div></div>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> Increased reach to student population.</p>
+                                    <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                                    <ul class="list-none text-left w-full mt-1 space-y-1">
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q2 – IG story campaign</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q3 – Discord AMA</li>
+                                        <li class="roadmap-item"><svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>Q4 – impact report</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="text-xl font-semibold text-[var(--color-primary-text)] mb-4 mt-8">Combined Impact of Partnerships</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm text-[var(--color-neutral)] mb-1">Credibility</p>
+                                <div class="kpi-chart-bar-container"><div class="kpi-chart-bar" data-value="80"></div></div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-[var(--color-neutral)] mb-1">Engagement</p>
+                                <div class="kpi-chart-bar-container"><div class="kpi-chart-bar" data-value="70"></div></div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-[var(--color-neutral)] mb-1">Visibility</p>
+                                <div class="kpi-chart-bar-container"><div class="kpi-chart-bar" data-value="90"></div></div>
+                            </div>
+                            <div>
+                                <p class="text-sm text-[var(--color-neutral)] mb-1">Trust</p>
+                                <div class="kpi-chart-bar-container"><div class="kpi-chart-bar" data-value="85"></div></div>
                             </div>
                         </div>
                    </div>
@@ -589,27 +906,27 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <h3 class="text-2xl font-bold text-[#3498db] mb-4">Mandatory Objectives</h3>
+                        <h3 class="text-2xl font-bold text-[var(--color-mandatory-heading)] mb-4">Mandatory Objectives</h3>
                         <ul class="space-y-3">
                             <li class="flex items-center text-[var(--color-neutral)]">
-                                <svg class="w-6 h-6 mr-2 text-[#3498db]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-6 h-6 mr-2 text-[var(--color-mandatory-icon)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 <span>User community development</span>
                             </li>
                             <li class="flex items-center text-[var(--color-neutral)]">
-                                <svg class="w-6 h-6 mr-2 text-[#3498db]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-6 h-6 mr-2 text-[var(--color-mandatory-icon)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 <span>UX/UI enhancements</span>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold text-[#27ae60] mb-4">Complementary Objectives</h3>
+                        <h3 class="text-2xl font-bold text-[var(--color-complementary-heading)] mb-4">Complementary Objectives</h3>
                         <ul class="space-y-3">
                             <li class="flex items-center text-[var(--color-neutral)]">
-                                <span class="bg-[#27ae60] text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-2">A</span>
+                                <span class="bg-[var(--color-complementary-icon)] text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-2">A</span>
                                 <span>Social media visibility</span>
                             </li>
                             <li class="flex items-center text-[var(--color-neutral)]">
-                                <span class="bg-[#27ae60] text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-2">B</span>
+                                <span class="bg-[var(--color-complementary-icon)] text-white rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-2">B</span>
                                 <span>Strategic partnerships</span>
                             </li>
                         </ul>
@@ -632,7 +949,7 @@
             const navLinks = document.querySelectorAll('.nav-link');
             const mobileNav = document.getElementById('mobile-nav');
             const contentSections = document.querySelectorAll('.content-section');
-            const objectiveLinks = document.querySelectorAll('.objective-card');
+            const objectiveCards = document.querySelectorAll('.objective-card'); // Renamed from objectiveLinks for clarity
             
             function switchTab(sectionId) {
                 contentSections.forEach(section => {
@@ -650,6 +967,8 @@
                 const targetSection = document.getElementById(sectionId);
                 if (targetSection) {
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Manually trigger animations for the newly active section
+                    triggerAnimationsForElement(targetSection);
                 }
             }
 
@@ -666,176 +985,202 @@
                  switchTab(sectionId);
             });
             
-            objectiveLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
+            objectiveCards.forEach(card => { // Changed to objectiveCards
+                card.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
+                    const targetId = card.getAttribute('href').substring(1); // Get ID without '#'
+                    const targetElement = document.getElementById(targetId);
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        triggerAnimationsForElement(targetElement); // Trigger animations on click too
                     }
                 });
             });
 
-            const partnerNodes = document.querySelectorAll('.partner-node');
-            const partnerNameEl = document.getElementById('partner-name');
-            const partnerContentEl = document.getElementById('partner-content');
-
-            const partnerData = {
-                'addiction-france': {
-                    name: 'Addiction France (Planned)',
-                    why: 'Our goal is to work directly with Addiction France to maximize the reach of our application by integrating "No More" into their existing support frameworks and communication channels.',
-                    integration: 'N/A',
-                    valueNoMore: 'N/A',
-                    valueSponsor: 'N/A',
-                    roadmap: 'Month 2: Send pitch deck'
-                },
-                'ameli': {
-                    name: 'Ameli (Planned)',
-                    why: 'Exploring mutual promotion and community outreach. We plan to collaborate on social media campaigns targeting specific demographics in need of support.',
-                    integration: 'N/A',
-                    valueNoMore: 'N/A',
-                    valueSponsor: 'N/A',
-                    roadmap: 'Month 2: Send pitch deck'
+            // Sponsor Data
+            const sponsorData = {
+                'addict-aide': {
+                    name: 'Addict’Aide (Addictions France)',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 7v6l4 2"></path></svg>',
+                    purpose: 'National expert on addiction prevention.',
+                    valueNoMore: '30', // Percentage for bar
+                    valueSponsor: 'Modern outreach to youth audience.',
+                    roadmap: ['Q2 – resource content', 'Q3 – campaign', 'Q4 – joint report']
                 },
                 'doctolib': {
-                    name: 'Doctolib (Planned)',
-                    why: 'Credible actor in digital health services',
-                    integration: 'Appointment sync for sobriety follow-ups',
-                    valueNoMore: 'Strong UX feature, health legitimacy',
-                    valueSponsor: 'Health engagement with youth (25%)',
-                    roadmap: 'Month 2: Send pitch deck, Month 4–5: Launch joint campaigns'
+                    name: 'Doctolib',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+                    purpose: 'Trusted digital health platform.',
+                    valueNoMore: 'Enhanced access to care professionals', // Not a percentage, will display as text
+                    valueSponsor: 'CSR through support for sobriety & mental health.',
+                    roadmap: ['Q2 – referral system', 'Q3 – booking bridge', 'Q4 – UX feedback']
                 },
-                'influencers': {
-                    name: 'Health & Wellness Influencers (Planned)',
-                    why: 'We are identifying and reaching out to authentic influencers in the mental health and recovery space to share their stories and promote "No More".',
-                    integration: 'N/A',
-                    valueNoMore: 'N/A',
-                    valueSponsor: 'N/A',
-                    roadmap: 'Month 2: Send pitch deck'
-                },
-                'professional-network': {
-                    name: 'Professional Network (Active)',
-                    why: 'We are already in contact with several medical doctors specializing in addiction and mental health. Their expertise is essential to guarantee the quality and relevance of the information and support offered by "No More".',
-                    integration: 'N/A',
-                    valueNoMore: 'Validate Content Accuracy, Refine Support Protocols, Facilitate Referrals, Provide Expert Insights',
-                    valueSponsor: 'N/A',
-                    roadmap: 'N/A'
-                },
-                'betterhelp': {
-                    name: 'BetterHelp (Planned)',
-                    why: 'Alignment on mental wellness, large visibility',
-                    integration: 'Discounted sessions in-app, branded mental health day',
-                    valueNoMore: 'Mental health boost, credibility',
-                    valueSponsor: '30% user conversion funnel (B2C)',
-                    roadmap: 'Month 2: Send pitch deck, Month 3: Setup MVP integrations'
-                },
-                'heetch': {
-                    name: 'Heetch (Planned)',
-                    why: 'Social student-friendly sponsor for app exposure',
-                    integration: 'Ride discounts for safe events via QR codes',
-                    valueNoMore: 'Safer events, social traction',
-                    valueSponsor: 'Increased rides from student group (12%)',
-                    roadmap: 'Month 2: Send pitch deck, Month 4–5: Launch joint campaigns'
-                },
-                'le-wagon': {
-                    name: 'Le Wagon (Planned)',
-                    why: 'Tech-savvy incubator, supports innovation',
-                    integration: 'Tech workshops, cross-promotion, guest speaker collabs',
-                    valueNoMore: 'Community boost, media reach',
-                    valueSponsor: 'Association with real-world impact (20%)',
-                    roadmap: 'Month 2: Send pitch deck, Month 3: Setup MVP integrations'
+                'ameli': {
+                    name: 'Ameli (Assurance Maladie)',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+                    purpose: 'Institutional health credibility.',
+                    valueNoMore: '25', // Percentage for bar
+                    valueSponsor: 'Connection with preventive tech services.',
+                    roadmap: ['Q2 – informational redirect', 'Q3 – newsletter feature']
                 },
                 'epitech': {
-                    name: 'Epitech (Active)',
-                    why: 'Academic credibility, pilot launch',
-                    integration: 'N/A',
-                    valueNoMore: '+20% credibility, beta testers',
-                    valueSponsor: 'N/A',
-                    roadmap: 'Q2 newsletter, Q3 pilot, Q4 feedback'
+                    name: 'Epitech',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 5-10 5-10-5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
+                    purpose: 'Academic and technical backbone.',
+                    valueNoMore: '20', // Percentage for bar
+                    valueSponsor: 'EIP visibility, student mental health impact.',
+                    roadmap: ['Q2 – communication to students', 'Q3 – feedback loop']
+                },
+                'professionals': {
+                    name: 'Certified Professionals',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>',
+                    purpose: 'Mental health & addiction recovery legitimacy.',
+                    valueNoMore: 'Trusted support network', // Not a percentage, will display as text
+                    valueSponsor: 'Platform visibility & outreach.',
+                    roadmap: ['Q2 – registration system', 'Q3 – expert AMAs on Discord']
+                },
+                'influencers': {
+                    name: 'Influencers (Micro-influencers)',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path><path d="M17 17l-1.26-1.26a2 2 0 0 0-2.83 0L9 17l-3.26-3.26a2 2 0 0 0-2.83 0L1 15"></path></svg>',
+                    purpose: 'Boost awareness via authentic reach.',
+                    valueNoMore: '40', // Percentage for bar
+                    valueSponsor: 'Meaningful cause alignment.',
+                    roadmap: ['Q2 – first campaign', 'Q3 – story series', 'Q4 – community challenges']
                 },
                 'nightline': {
-                    name: 'Nightline (Planned)',
-                    why: 'Mental health ally',
-                    integration: 'N/A',
-                    valueNoMore: '+25% trust perception',
-                    valueSponsor: 'N/A',
-                    roadmap: 'Q2 IG story campaign, Q3 Discord AMA, Q4 impact report'
-                },
-                'addict-aide': {
-                    name: 'Addict’Aide (Planned)',
-                    why: 'Expert content on addiction',
-                    integration: 'N/A',
-                    valueNoMore: '+30% content authority',
-                    valueSponsor: 'N/A',
-                    roadmap: 'Q2 blog, Q3 campaign, Q4 performance review'
+                    name: 'Nightline',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+                    purpose: 'Mental health ally providing confidential support.',
+                    valueNoMore: '25', // Percentage for bar
+                    valueSponsor: 'Increased reach to student population.',
+                    roadmap: ['Q2 – IG story campaign', 'Q3 – Discord AMA', 'Q4 – impact report']
                 }
             };
-            
-            partnerNodes.forEach(node => {
-                node.addEventListener('click', () => {
-                    const partnerId = node.dataset.partner;
-                    const data = partnerData[partnerId];
 
-                    let contentHtml = `<p class="text-[var(--color-neutral)]"><strong>Why This Partner?</strong> ${data.why}</p>`;
-                    if (data.integration && data.integration !== 'N/A') {
-                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Integration Model:</strong> ${data.integration}</p>`;
-                    }
-                    if (data.valueNoMore && data.valueNoMore !== 'N/A') {
-                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> ${data.valueNoMore}</p>`;
-                    }
-                    if (data.valueSponsor && data.valueSponsor !== 'N/A') {
-                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Value for Partner:</strong> ${data.valueSponsor}</p>`;
-                    }
-                    if (data.roadmap && data.roadmap !== 'N/A') {
-                        contentHtml += `<p class="mt-2 text-[var(--color-neutral)]"><strong>Roadmap Action:</strong> ${data.roadmap}</p>`;
-                    }
+            // Function to render sponsor cards
+            function renderSponsorCards() {
+                const sponsorGrid = document.querySelector('#objective-b-details .grid.gap-6');
+                sponsorGrid.innerHTML = ''; // Clear existing content
 
-                    partnerNameEl.textContent = data.name;
-                    partnerContentEl.innerHTML = contentHtml;
+                const orderedSponsors = [
+                    'addict-aide', 'doctolib', 'ameli',
+                    'epitech', 'professionals', 'influencers', 'nightline'
+                ];
 
-                    partnerNodes.forEach(n => n.classList.remove('ring-2', 'ring-[var(--color-highlight)]'));
-                    node.classList.add('ring-2', 'ring-[var(--color-highlight)]');
+                orderedSponsors.forEach(id => {
+                    const data = sponsorData[id];
+                    if (!data) return; // Skip if data is missing
+
+                    let valueNoMoreHtml = `<p class="text-sm text-[var(--color-neutral)]"><strong>Value for NoMore:</strong> `;
+                    let valueBarHtml = '';
+                    const valueNoMoreInt = parseInt(data.valueNoMore);
+
+                    if (!isNaN(valueNoMoreInt)) {
+                        valueNoMoreHtml += `+<span class="animated-number" data-target="${valueNoMoreInt}">0</span>% impact`;
+                        valueBarHtml = `<div class="sponsor-value-bar"><div class="sponsor-value-fill" data-value="${valueNoMoreInt}"></div></div>`;
+                    } else {
+                        valueNoMoreHtml += data.valueNoMore; // Display as text if not a number
+                    }
+                    valueNoMoreHtml += `</p>`;
+
+                    const roadmapHtml = data.roadmap.map(item => `
+                        <li class="roadmap-item">
+                            <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg>
+                            ${item}
+                        </li>
+                    `).join('');
+
+                    const cardHtml = `
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo">
+                                ${data.icon}
+                            </div>
+                            <h5 class="font-semibold text-[var(--color-primary-text)] mb-2">${data.name}</h5>
+                            <p class="text-sm text-[var(--color-neutral)] mb-2"><strong>Why:</strong> ${data.purpose}</p>
+                            ${valueNoMoreHtml}
+                            ${valueBarHtml}
+                            <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Value for Partner:</strong> ${data.valueSponsor}</p>
+                            <p class="text-sm text-[var(--color-neutral)] mt-2"><strong>Roadmap:</strong></p>
+                            <ul class="list-none text-left w-full mt-1 space-y-1">
+                                ${roadmapHtml}
+                            </ul>
+                        </div>
+                    `;
+                    sponsorGrid.insertAdjacentHTML('beforeend', cardHtml);
                 });
-            });
+            }
 
-            const animateNumbers = (entries, observer) => {
+            renderSponsorCards(); // Initial render of sponsor cards
+
+            // Function to trigger animations for a given element and its children
+            function triggerAnimationsForElement(element) {
+                // Animate numbers
+                const animatedNumbers = element.querySelectorAll('.animated-number');
+                animatedNumbers.forEach(num => {
+                    const target = parseInt(num.dataset.target);
+                    // Reset to 0 before animating if it's already at target or not started
+                    if (parseInt(num.textContent) !== 0 || isNaN(parseInt(num.textContent))) { // Also reset if not a number
+                        num.textContent = '0';
+                    }
+                    let current = 0;
+                    const increment = target / 100; // Adjust for smoother animation
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            num.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            num.textContent = Math.floor(current);
+                        }
+                    }, 10); // Adjust speed
+                });
+
+                // Animate sponsor value bars
+                const sponsorValueBars = element.querySelectorAll('.sponsor-value-fill');
+                sponsorValueBars.forEach(bar => {
+                    const value = parseInt(bar.dataset.value);
+                    if (!isNaN(value)) { // Only animate if value is a number
+                        bar.style.width = `0%`; // Reset for replay
+                        setTimeout(() => {
+                            bar.style.width = `${value}%`;
+                        }, 50); // Small delay to ensure reset takes effect
+                    }
+                });
+
+                // Animate KPI chart bars
+                const kpiChartBars = element.querySelectorAll('.kpi-chart-bar');
+                kpiChartBars.forEach(bar => {
+                    const value = parseInt(bar.dataset.value);
+                    bar.style.width = `0%`; // Reset for replay
+                    setTimeout(() => {
+                        bar.style.width = `${value}%`;
+                    }, 50); // Small delay to ensure reset takes effect
+                });
+            }
+
+            // Intersection Observer for triggering animations when elements come into view
+            const animateObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const animatedNumbers = entry.target.querySelectorAll('.animated-number');
-                        animatedNumbers.forEach(num => {
-                            const target = parseInt(num.dataset.target);
-                            let current = 0;
-                            const increment = target / 100;
-                            const timer = setInterval(() => {
-                                current += increment;
-                                if (current >= target) {
-                                    num.textContent = target;
-                                    clearInterval(timer);
-                                } else {
-                                    num.textContent = Math.floor(current);
-                                }
-                            }, 10);
-                        });
-
-                        const valueBars = entry.target.querySelectorAll('.value-bar');
-                        valueBars.forEach(bar => {
-                            const value = parseInt(bar.dataset.value);
-                            bar.style.width = `${value}%`;
-                        });
-                        observer.unobserve(entry.target);
+                        triggerAnimationsForElement(entry.target);
+                        // Removed unobserve to allow animations to replay if scrolled out and back in
+                    } else {
+                        // Reset elements when they go out of view to prepare for re-animation
+                        entry.target.querySelectorAll('.animated-number').forEach(num => num.textContent = '0');
+                        entry.target.querySelectorAll('.sponsor-value-fill').forEach(bar => bar.style.width = '0%');
+                        entry.target.querySelectorAll('.kpi-chart-bar').forEach(bar => bar.style.width = '0%');
                     }
                 });
-            };
-
-            const observer = new IntersectionObserver(animateNumbers, {
-                threshold: 0.5
+            }, {
+                threshold: 0.5 // Trigger when 50% of the element is visible
             });
 
-            document.querySelectorAll('#objective-a-details, #objective-b-details').forEach(section => {
-                observer.observe(section);
+            // Observe the sections containing animated numbers and value bars
+            document.querySelectorAll('#objective-a-details, #objective-b-details, #mandatory, #strategic-alignment').forEach(section => {
+                animateObserver.observe(section);
             });
 
+            // Initial tab activation and animation trigger on page load
             const initialSection = window.location.hash ? window.location.hash.substring(1) : 'introduction';
             switchTab(initialSection);
         });
